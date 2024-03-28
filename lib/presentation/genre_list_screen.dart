@@ -15,7 +15,7 @@ class GenreListScreen extends StatelessWidget {
         title: const Text('Select Genre'),
         centerTitle: false,
       ),
-      body: GridView.builder(
+      body: Obx(() => GridView.builder(
           itemCount: c.genre.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, childAspectRatio: 3),
@@ -30,11 +30,11 @@ class GenreListScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 0.5),
                       borderRadius: BorderRadius.circular(10)),
-                  child: Center(child: Obx(() => Text(c.genre[index].name))),
+                  child: Center(child: Text(c.genre[index].name)),
                 ),
               ),
             );
-          }),
+          })),
     );
   }
 }
