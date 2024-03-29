@@ -38,6 +38,11 @@ class MovieListController extends GetxController {
     movies.addAll(await repo.fetchMovies(page, genreId));
   }
 
+  Future<String> fetchTrailerVideo(int movieId) async {
+    final video = await repo.fetchVideo(movieId);
+    return video.key;
+  }
+
   void loadMore() async {
     scrollController.addListener(() {
       if (scrollController.position.maxScrollExtent ==

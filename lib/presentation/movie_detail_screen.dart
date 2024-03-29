@@ -1,47 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tmdb_app/module/movie.dart';
 import 'package:tmdb_app/presentation/movie_detail_controller.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final Movie movie;
+  final String trilerId;
 
-  const MovieDetailScreen({super.key, required this.movie});
+  const MovieDetailScreen(
+      {super.key, required this.movie, required this.trilerId});
 
   @override
   Widget build(BuildContext context) {
     final MovieDetailController c =
-        Get.put(MovieDetailController(movieId: movie.id));
+        Get.put(MovieDetailController(movieId: movie.id, trilerId: trilerId));
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie Detail'),
+        title: const Text('Movie Details'),
       ),
       body: Obx(() => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.network(
-                      c.thumbnailUrl.value,
-                      fit: BoxFit.fill,
-                    ),
-                    GestureDetector(
-                      onTap: () async {
-                        print('open');
-                      },
-                      child: const Center(
-                        child: Icon(
-                          Icons.play_circle_outline,
-                          size: 75,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              _youtubePlayer(c),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -120,5 +102,21 @@ class MovieDetailScreen extends StatelessWidget {
             ],
           )),
     );
+  }
+
+  Widget _youtubePlayer(MovieDetailController controller) {
+    return YoutubePlayerBuilder(
+        onExitFullScreen: () {
+          SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+        },
+        player: YoutubePlayer(
+            controller: controller.ytController,
+            showVideoProgressIndicator: true,
+            onReady: () {
+              controller.isPlayerReady = true;
+            }),
+        builder: (context, player) {
+          return player;
+        });
   }
 }

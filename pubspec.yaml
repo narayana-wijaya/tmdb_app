@@ -39,6 +39,7 @@ dependencies:
   json_annotation: ^4.8.1
   freezed: ^2.4.7
   get: ^4.6.6
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_test:

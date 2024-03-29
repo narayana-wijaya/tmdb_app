@@ -35,8 +35,13 @@ class MovieListScreen extends StatelessWidget {
 
   Widget _buildMovieCard(Movie movie) {
     return GestureDetector(
-      onTap: () {
-        Get.to(MovieDetailScreen(movie: movie));
+      onTap: () async {
+        final id =
+            await Get.find<MovieListController>().fetchTrailerVideo(movie.id);
+        Get.to(MovieDetailScreen(
+          movie: movie,
+          trilerId: id,
+        ));
       },
       child: Container(
         decoration: BoxDecoration(
