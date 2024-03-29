@@ -1,5 +1,5 @@
 import 'package:tmdb_app/module/genre.dart';
-import 'package:tmdb_app/services/genre_data_source.dart';
+import 'package:tmdb_app/data_sources/genre_data_source.dart';
 
 abstract class GenreRepository {
   Future<List<Genre>> fetchGenre();

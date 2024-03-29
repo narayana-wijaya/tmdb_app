@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmdb_app/module/movie.dart';
-import 'package:tmdb_app/repository/movie_repository.dart';
-import 'package:tmdb_app/services/movie_data_source.dart';
+import 'package:tmdb_app/repository/movie_list_repository.dart';
+import 'package:tmdb_app/data_sources/movie_data_source.dart';
 
 class MovieListController extends GetxController {
   ScrollController scrollController = ScrollController();
   final int genreId;
+  final repo = MovieRepositoryImp(MovieDataSource());
 
   MovieListController(this.genreId);
 
@@ -29,18 +30,19 @@ class MovieListController extends GetxController {
   void onClose() {
     latestPage = 1;
     movies.value = [];
+    repo.totalPage = 1000;
     super.onClose();
   }
 
   void fetchMovies(int page) async {
-    final repo = MovieRepositoryImp(MovieDataSource());
     movies.addAll(await repo.fetchMovies(page, genreId));
   }
 
   void loadMore() async {
     scrollController.addListener(() {
       if (scrollController.position.maxScrollExtent ==
-          scrollController.position.pixels) {
+              scrollController.position.pixels &&
+          latestPage <= repo.totalPage) {
         latestPage += 1;
         fetchMovies(latestPage);
         update();

@@ -23,8 +23,16 @@ class Review with _$Review {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory Review(
       {required String author,
+      required Author authorDetails,
       required String content,
       required String createdAt}) = _Review;
 
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);
+}
+
+@freezed
+class Author with _$Author {
+  const factory Author(double? rating) = _Author;
+
+  factory Author.fromJson(Map<String, dynamic> json) => _$AuthorFromJson(json);
 }
