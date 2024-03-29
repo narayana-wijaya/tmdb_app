@@ -1,10 +1,8 @@
 import 'package:tmdb_app/module/genre.dart';
-import 'package:tmdb_app/services/genre_data_sources.dart';
+import 'package:tmdb_app/services/genre_data_source.dart';
 
 abstract class GenreRepository {
   Future<List<Genre>> fetchGenre();
-
-  Future<void> setGenre(Genre genre);
 }
 
 class GenreRepositoryImpl implements GenreRepository {
@@ -15,10 +13,5 @@ class GenreRepositoryImpl implements GenreRepository {
   @override
   Future<List<Genre>> fetchGenre() async {
     return await _dataSource.fetchGenre();
-  }
-
-  @override
-  Future<void> setGenre(Genre genre) async {
-    return;
   }
 }

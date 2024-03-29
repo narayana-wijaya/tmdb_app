@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmdb_app/presentation/genre_list_controller.dart';
 import 'package:tmdb_app/presentation/movie_list_screen.dart';
-import 'package:tmdb_app/repository/genre_repository.dart';
 
 class GenreListScreen extends StatelessWidget {
   const GenreListScreen({super.key});
@@ -24,7 +23,7 @@ class GenreListScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  Get.to(const MovieListScreen());
+                  Get.to(MovieListScreen(genre: c.genre[index]));
                 },
                 child: Container(
                   decoration: BoxDecoration(
