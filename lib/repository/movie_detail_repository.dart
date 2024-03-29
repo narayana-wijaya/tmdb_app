@@ -1,5 +1,4 @@
 import 'package:tmdb_app/module/review.dart';
-import 'package:tmdb_app/module/video.dart';
 import 'package:tmdb_app/data_sources/movie_data_source.dart';
 
 abstract class MovieDetailRepository {
