@@ -16,14 +16,16 @@ class MovieRepositoryImp implements MovieListRepository {
 
   @override
   Future<List<Movie>> fetchMovies(int page, int genreId) async {
-    final res = await _dataSource.fetchMovies(page, genreId);
-    totalPage = res.totalPages;
-    return res.results;
+    final response = await _dataSource.fetchMovies(page, genreId);
+    final data = MovieResponseData.fromJson(response.body);
+    totalPage = data.totalPages;
+    return data.results;
   }
 
   @override
   Future<Video> fetchVideo(int movieId) async {
     final res = await _dataSource.fetchVideo(movieId);
-    return res.results.firstWhere((element) => element.type == "Trailer");
+    final data = VideoResponseData.fromJson(res.body);
+    return data.results.firstWhere((element) => element.type == "Trailer");
   }
 }

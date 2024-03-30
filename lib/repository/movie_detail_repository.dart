@@ -15,7 +15,8 @@ class MovieDetailRepositoryImp implements MovieDetailRepository {
   @override
   Future<List<Review>> fetchReview(int page, int movieId) async {
     final res = await _dataSource.fetchReview(page, movieId);
-    totalPageReview = res.totalPages;
-    return res.results;
+    final data = ReviewsResponseData.fromJson(res.body);
+    totalPageReview = data.totalPages;
+    return data.results;
   }
 }
