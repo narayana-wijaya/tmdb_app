@@ -1,6 +1,6 @@
-import 'package:tmdb_app/module/movie.dart';
+import 'package:tmdb_app/domain/movie.dart';
 import 'package:tmdb_app/data_sources/movie_data_source.dart';
-import 'package:tmdb_app/module/video.dart';
+import 'package:tmdb_app/domain/video.dart';
 
 abstract class MovieListRepository {
   Future<List<Movie>> fetchMovies(int page, int genreId);
@@ -8,9 +8,9 @@ abstract class MovieListRepository {
 }
 
 class MovieRepositoryImp implements MovieListRepository {
-  final MovieDataSource _dataSource;
+  final MovieDataSource _dataSource = MovieDataSource();
 
-  MovieRepositoryImp(this._dataSource);
+  MovieRepositoryImp();
 
   int totalPage = 1000;
 

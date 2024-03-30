@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tmdb_app/module/review.dart';
+import 'package:tmdb_app/domain/review.dart';
 import 'package:tmdb_app/repository/movie_detail_repository.dart';
-import 'package:tmdb_app/data_sources/movie_data_source.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailController extends GetxController {
@@ -10,7 +9,7 @@ class MovieDetailController extends GetxController {
   late YoutubePlayerController ytController;
   final int movieId;
   final String trilerId;
-  final repo = MovieDetailRepositoryImp(MovieDataSource());
+  final repo = MovieDetailRepositoryImp();
 
   MovieDetailController({required this.movieId, required this.trilerId});
 

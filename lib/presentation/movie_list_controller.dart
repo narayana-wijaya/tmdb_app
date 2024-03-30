@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tmdb_app/module/movie.dart';
+import 'package:tmdb_app/domain/movie.dart';
 import 'package:tmdb_app/repository/movie_list_repository.dart';
-import 'package:tmdb_app/data_sources/movie_data_source.dart';
 
 class MovieListController extends GetxController {
   ScrollController scrollController = ScrollController();
   final int genreId;
-  final repo = MovieRepositoryImp(MovieDataSource());
+  final repo = MovieRepositoryImp();
 
   MovieListController(this.genreId);
 

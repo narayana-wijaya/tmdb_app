@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tmdb_app/module/movie.dart';
+import 'package:tmdb_app/domain/movie.dart';
 import 'package:tmdb_app/presentation/movie_detail_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 

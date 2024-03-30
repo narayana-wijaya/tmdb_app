@@ -1,4 +1,4 @@
-import 'package:tmdb_app/module/review.dart';
+import 'package:tmdb_app/domain/review.dart';
 import 'package:tmdb_app/data_sources/movie_data_source.dart';
 
 abstract class MovieDetailRepository {
@@ -6,9 +6,9 @@ abstract class MovieDetailRepository {
 }
 
 class MovieDetailRepositoryImp implements MovieDetailRepository {
-  final MovieDataSource _dataSource;
+  final MovieDataSource _dataSource = MovieDataSource();
 
-  MovieDetailRepositoryImp(this._dataSource);
+  MovieDetailRepositoryImp();
 
   int totalPageReview = 1000;
 

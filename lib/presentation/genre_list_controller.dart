@@ -1,7 +1,6 @@
 import 'package:get/state_manager.dart';
-import 'package:tmdb_app/module/genre.dart';
+import 'package:tmdb_app/domain/genre.dart';
 import 'package:tmdb_app/repository/genre_repository.dart';
-import 'package:tmdb_app/data_sources/genre_data_source.dart';
 
 class GenreListController extends GetxController {
   final genre = <Genre>[].obs;
@@ -13,7 +12,7 @@ class GenreListController extends GetxController {
   }
 
   void fetchGenre() async {
-    final repository = GenreRepositoryImpl(GenreDataSource());
+    final repository = GenreRepositoryImpl();
     genre.value = await repository.fetchGenre();
   }
 }

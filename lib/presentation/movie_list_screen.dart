@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tmdb_app/module/genre.dart';
-import 'package:tmdb_app/module/movie.dart';
+import 'package:tmdb_app/domain/genre.dart';
+import 'package:tmdb_app/domain/movie.dart';
 import 'package:tmdb_app/presentation/movie_detail_screen.dart';
 import 'package:tmdb_app/presentation/movie_list_controller.dart';
-import 'package:tmdb_app/tmdb_constant.dart';
+import 'package:tmdb_app/tmdb_api.dart';
 
 class MovieListScreen extends StatelessWidget {
   final Genre genre;
@@ -61,7 +61,7 @@ class MovieListScreen extends StatelessWidget {
                         child: Icon(Icons.movie),
                       )
                     : Image.network(
-                        TMDBConstant.imagePath + movie.posterPath!,
+                        TMDBBaseUrl.imagePath + movie.posterPath!,
                         fit: BoxFit.fill,
                       ),
               ),
