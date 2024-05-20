@@ -1,4 +1,4 @@
-# tmdb_app
+# TMDB Flutter Application
 
 A new Flutter project.
 
