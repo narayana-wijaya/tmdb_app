@@ -1,7 +1,5 @@
 # TMDB Flutter Application
 
-A new Flutter project.
-
 ## Getting Started
 
 This Flutter project demonstrates the implementation of the repository pattern alongside the GetX library for state management. The repository pattern helps in separating concerns and promoting a clean architecture, while GetX provides a simple yet powerful state management solution.
